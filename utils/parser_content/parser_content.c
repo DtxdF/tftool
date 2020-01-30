@@ -22,6 +22,7 @@
 #include "../../core/join_filename/join_filename.h"
 #include "../../core/cronometer/cronometer.h"
 #include "../../core/strlen_m/strlen_m.h"
+#include "../../core/isdir/isdir.h"
 
 int parse_content(struct parser * Parsed, struct client_params * CParams) {
 	int path_length;
@@ -49,11 +50,21 @@ int parse_content(struct parser * Parsed, struct client_params * CParams) {
 		join_filename(Parsed->path, CParams->P_config->root_folder,
 					  basename(Parsed->filename), path_length);
 
+		if (isdir(Parsed->path) == 1) {
+			cprintf(stderr, "%s is a directory!",
+					Parsed->path);
+			free(Parsed->path);
+			return -1;
+		
+		}
+
 		// Se verifica que la extensión esté permitida
 	
 		if (!check_extension(Parsed->path, CParams->P_config->extension_only,
 							 strlen_m(CParams->P_config->extension_only))) {
 			cprintf(stderr, "The \"%s\" file has an incorrect extension", Parsed->path);
+			free(Parsed->path);
+
 			return -1;
 
 		}

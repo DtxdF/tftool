@@ -6,7 +6,7 @@ OBJECTS			=	conf_parser.o cronometer.o exists.o get_extension.o \
 				ini.o interact.o join_filename.o free_resources.o \
 				get_filesize.o free_secure.o exit_secure.o parser_content.o \
 				strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
-				upload.o delete.o client.o strtohost.o check_error.o
+				upload.o delete.o client.o strtohost.o check_error.o isdir.o
 LINK_FILES		=	-lpthread
 OBJECT_COMPILE		=	${COMPILER} ${FLAGS} -c
 FILE_COMPILE		=	${COMPILER} ${FLAGS} -o ${PROJECT} ${MAIN_PROJECT} ${OBJECTS} ${LINK_FILES}
@@ -58,6 +58,9 @@ strtohost.o:
 
 check_error.o:
 	${OBJECT_COMPILE} utils/skills/check_error/check_error.c
+
+isdir.o:
+	${OBJECT_COMPILE} core/isdir/isdir.c
 
 strlen_m.o:
 	${OBJECT_COMPILE} core/strlen_m/strlen_m.c
