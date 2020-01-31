@@ -1,17 +1,22 @@
-COMPILER		=	gcc
-PROJECT			=	tftool
-MAIN_PROJECT		=	tftool.c
-FLAGS			=	-Wall -g
-OBJECTS			=	conf_parser.o cronometer.o exists.o get_extension.o \
-				ini.o interact.o join_filename.o free_resources.o \
-				get_filesize.o free_secure.o exit_secure.o parser_content.o \
-				strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
-				upload.o delete.o client.o strtohost.o check_error.o isdir.o
-LINK_FILES		=	-lpthread
-OBJECT_COMPILE		=	${COMPILER} ${FLAGS} -c
-FILE_COMPILE		=	${COMPILER} ${FLAGS} -o ${PROJECT} ${MAIN_PROJECT} ${OBJECTS} ${LINK_FILES}
+SHELL 			= /usr/bin/env bash
+DESTDIR			= /usr/bin
+SRVDIR			= /etc/init.d
+CFGDIR			= /etc/tftool
+INSTALL_PROGRAM		= install
+CC			= gcc
+CFLAGS			= -Wall -O
+TARGET			= tftool
+OBJS			= conf_parser.o cronometer.o exists.o get_extension.o \
+			  ini.o interact.o join_filename.o free_resources.o \
+			  get_filesize.o free_secure.o exit_secure.o parser_content.o \
+			  strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
+			  upload.o delete.o client.o strtohost.o check_error.o isdir.o
+LIBS			= -lpthread
 
-main: ${OBJECTS}
+OBJECT_COMPILE		= ${CC} ${CFLAGS} -c
+FILE_COMPILE		= ${CC} ${CFLAGS} -o ${TARGET} ${TARGET}.c ${OBJS} ${LIBS}
+
+${TARGET}: ${OBJS}
 	${FILE_COMPILE}
 
 conf_parser.o:
@@ -86,6 +91,22 @@ join_filename.o:
 get_filesize.o:
 	${OBJECT_COMPILE} core/get_filesize/get_filesize.c
 
-.PHONY: clean
 clean:
-	rm --recursive --force *.o
+	${RM} ./tftool *.o
+
+install: ${TARGET}
+	@echo Installing...
+	${INSTALL_PROGRAM} -v -m 644 -D conf/gconf.cfg ${CFGDIR}
+	${INSTALL_PROGRAM} -v -m 751 tftool ${DESTDIR}
+	${INSTALL_PROGRAM} -v -m 751 install/tftool ${SRVDIR}
+	update-rc.d tftool start 2 3 4 5 .
+	@echo Done.
+
+uninstall: install
+	@echo Uninstalling...
+	${RM} --dir --force --recursive --verbose ${CFGDIR}/gconf.cfg
+	${RM} --verbose ${DESTDIR}/tftool
+	${RM} --verbose ${SRVDIR}/tftool
+	@echo Done.
+
+.PHONY: clean all install uninstall

@@ -1,0 +1,50 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:        tftool
+# Required-Start:  $network $remote_fs $syslog
+# Required-Stop:   $network $remote_fs $syslog
+# Default-Start:   2 3 4 5
+# Default-Stop: 
+# Short-Description: Start tftool server
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+DAEMON=/usr/bin/tftool
+PIDFILE=/var/run/tftool.pid
+
+test -x $DAEMON || exit 0
+
+case $1 in
+	start)
+		log_daemon_msg "Starting tftool server" "tftool"
+		start-stop-daemon --background --start --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE
+		log_end_msg $?
+  		;;
+	stop)
+		log_daemon_msg "Stopping tftool server" "tftool"
+		start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE --retry=TERM/30/KILL/5 --exec $DAEMON
+		log_end_msg $?
+		rm -f $PIDFILE
+  		;;
+	restart|force-reload)
+		$0 stop && sleep 2 && $0 start
+  		;;
+	try-restart)
+		if $0 status >/dev/null; then
+			$0 restart
+		else
+			exit 0
+		fi
+		;;
+	status)
+		status_of_proc $DAEMON "tftool server"
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|try-restart|force-reload|status}"
+		exit 2
+		;;
+esac
+
+exit 0

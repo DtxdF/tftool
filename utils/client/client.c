@@ -67,6 +67,7 @@ void sendall(int fd, char * filename, char * addr, unsigned short int debug) {
 	int recv_length;
 	int recv_sock;
 
+	recv_length = 0;
 	fz.size = 0;
 
 	file = fopen(filename, "rb");

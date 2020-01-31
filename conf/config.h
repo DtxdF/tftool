@@ -3,7 +3,7 @@
 #ifndef _GLOBAL_CONF
 #define _GLOBAL_CONF
 
-#define CONF_FILE		"conf/gconf.cfg" /* El archivo de configuración */
+#define CONF_FILE		"/etc/tftool/gconf.cfg" /* El archivo de configuración */
 
 /* Los siguientes valores iran a las opciones del socket */
 
