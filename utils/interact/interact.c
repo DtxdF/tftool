@@ -20,9 +20,11 @@
 #include <signal.h>
 
 #include "../../conf/config.h"
+
 #include "../../core/exists/exists.h"
 #include "../../core/cronometer/cronometer.h"
 #include "../../core/get_filesize/get_filesize.h"
+#include "../../core/isdir/isdir.h"
 
 #include "interact.h"
 #include "../conf_parser/conf_parser.h"
@@ -33,6 +35,7 @@
 #include "../exit_secure/exit_secure.h"
 #include "../check_action/check_action.h"
 #include "../skills/tools.h"
+#include "../redirection/redirection.h"
 
 #define CMP_ACTION(c) check_action(c, CParams->P_config->action, sizeof(CParams->P_config->action))
 
@@ -53,6 +56,7 @@ void * thread_interact(void * args) {
 	free(CParams->P_config->root_folder);
 	free(CParams->P_config->extension_only);
 	free(CParams->P_config->backup);
+	free(CParams->P_config->output);
 
 	parser(CParams->P_config);
 
@@ -150,8 +154,21 @@ void interact(int fd, struct configuration * P_config) {
 	
 	}
 
+	if ((strncmp(P_config->output, "",
+				strlen(P_config->output)) != 0) && (exists(P_config->output)) &&
+					   								 (!isdir(P_config->output))) {
+		cprintf(stderr, "An unknown error has ocurred with the out file!");
+		exit_s();
+	
+	}
+	
+	if (redirection(P_config->output) == -1) {
+		cprintf(stderr, "Output: %s", strerror(errno));
+	
+	}
+
 	free_secure(Params, P_config);
-	// Free secure
+	/* Liberar de forma segura */
 	signal(SIGINT, sig_secure);
 	signal(SIGTERM, sig_secure);
 	signal(SIGQUIT, sig_secure);
@@ -170,6 +187,7 @@ void interact(int fd, struct configuration * P_config) {
 			dprintf("Waiting \"%d\" second's for a space in the connections ...",
 					P_config->timewait);
 			sleep(P_config->timewait);
+
 			continue;
 
 		}

@@ -18,11 +18,13 @@
 
 #include "utils/conf_parser/conf_parser.h"
 #include "utils/interact/interact.h"
+#include "utils/check_config/check_config.h"
 
 int main(void) {
 	struct configuration config;
 
 	parser(&config); /* Ajustamos los valores de la configuración */
+	check_config(&config); /* Verificamos que los valores sean correctos */
 
 	struct sockaddr_in Server;
 	struct hostent * hst;

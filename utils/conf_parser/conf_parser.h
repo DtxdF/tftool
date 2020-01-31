@@ -1,5 +1,8 @@
 #ifndef _CONF_PARSER
 #define _CONF_PARSER
+
+#include <pthread.h>
+
 struct configuration {
 
 	// Server configuration
@@ -8,6 +11,7 @@ struct configuration {
 	// Folder configuration
 	char * root_folder;
 	unsigned short int debug;
+	char * output;
 	unsigned int timeout;
 	// Actions
 	char action[32];

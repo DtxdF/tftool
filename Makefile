@@ -4,13 +4,14 @@ SRVDIR			= /etc/init.d
 CFGDIR			= /etc/tftool
 INSTALL_PROGRAM		= install
 CC			= gcc
-CFLAGS			= -Wall -O
+CFLAGS			= -Wall -g
 TARGET			= tftool
 OBJS			= conf_parser.o cronometer.o exists.o get_extension.o \
 			  ini.o interact.o join_filename.o free_resources.o \
 			  get_filesize.o free_secure.o exit_secure.o parser_content.o \
 			  strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
-			  upload.o delete.o client.o strtohost.o check_error.o isdir.o
+			  upload.o delete.o client.o strtohost.o check_error.o isdir.o \
+			  check_config.o redirection.o
 LIBS			= -lpthread
 
 OBJECT_COMPILE		= ${CC} ${CFLAGS} -c
@@ -64,6 +65,12 @@ strtohost.o:
 check_error.o:
 	${OBJECT_COMPILE} utils/skills/check_error/check_error.c
 
+check_config.o:
+	${OBJECT_COMPILE} utils/check_config/check_config.c
+
+redirection.o:
+	${OBJECT_COMPILE} utils/redirection/redirection.c
+
 isdir.o:
 	${OBJECT_COMPILE} core/isdir/isdir.c
 
@@ -92,7 +99,7 @@ get_filesize.o:
 	${OBJECT_COMPILE} core/get_filesize/get_filesize.c
 
 clean:
-	${RM} ./tftool *.o
+	${RM} *.o
 
 install: ${TARGET}
 	@echo Installing...
@@ -109,4 +116,4 @@ uninstall: install
 	${RM} --verbose ${SRVDIR}/tftool
 	@echo Done.
 
-.PHONY: clean all install uninstall
+.PHONY: clean install uninstall

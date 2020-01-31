@@ -37,26 +37,29 @@ int handler(void * user, const char * section, const char * name,
     } else if (MATCH("ROOT", "debug")) {
     	ptr_config->debug = strtol(value, &ptr_tmp, 10);
     
-    } else if (MATCH("ROOT", "timeout")) {
+    } else if (MATCH("ROOT", "output")) {
+		ptr_config->output = strdup(value);
+	
+	} else if (MATCH("ROOT", "timeout")) {
     	ptr_config->timeout = strtol(value, &ptr_tmp, 10);
     
     } else if (MATCH("ACTIONS", "extension_only")) {
-	ptr_config->extension_only = strdup(value);
+		ptr_config->extension_only = strdup(value);
 
     } else if (MATCH("ACTIONS", "action")) {
     	strncpy(ptr_config->action, value, sizeof(ptr_config->action));
     
     } else if (MATCH("ACTIONS", "timewait")) {
-	ptr_config->timewait = strtol(value, &ptr_tmp, 10);
+		ptr_config->timewait = strtol(value, &ptr_tmp, 10);
     
     } else if (MATCH("ACTIONS", "users_limit")) {
-	ptr_config->users_limit = strtol(value, &ptr_tmp, 10);
+		ptr_config->users_limit = strtol(value, &ptr_tmp, 10);
     
     } else if (MATCH("ACTIONS", "backup")) {
     	ptr_config->backup = strdup(value);
     
     } else {
-	return 0;
+		return 0;
     
     }
 
@@ -66,8 +69,8 @@ int handler(void * user, const char * section, const char * name,
 
 void parser(struct configuration * P_config) {
     if (ini_parse(CONF_FILE, handler, P_config) < 0) {
-	fprintf(stderr, "An error has ocurred reading the file configuration. ErrorCode:%d - ErrorMSG:%s\n", errno, strerror(errno));
-	exit_s();
+		fprintf(stderr, "An error has ocurred reading the file configuration. ErrorCode:%d - ErrorMSG:%s\n", errno, strerror(errno));
+		exit_s();
     
     }
 

@@ -19,12 +19,12 @@ test -x $DAEMON || exit 0
 case $1 in
 	start)
 		log_daemon_msg "Starting tftool server" "tftool"
-		start-stop-daemon --background --start --oknodo --pidfile $PIDFILE --startas $DAEMON -- -p $PIDFILE
+		start-stop-daemon --start --background --oknodo --exec $DAEMON
 		log_end_msg $?
   		;;
 	stop)
 		log_daemon_msg "Stopping tftool server" "tftool"
-		start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE --retry=TERM/30/KILL/5 --exec $DAEMON
+		start-stop-daemon --stop --signal INT --quiet --exec $DAEMON
 		log_end_msg $?
 		rm -f $PIDFILE
   		;;

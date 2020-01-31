@@ -28,6 +28,7 @@ void free_secure(struct client_params * CParams, struct configuration * P_config
 		free(Config->root_folder);
 		free(Config->extension_only);
 		free(Config->backup);
+		free(Config->output);
 
 		pthread_mutex_destroy(Config->mutex);
 	
@@ -42,7 +43,7 @@ void sig_secure(int signum) {
 
 	dprintf("Terminate.");
 
-	signal(signum, sig_secure);
+	//signal(signum, sig_secure);
 
 	pthread_exit(0);
 
