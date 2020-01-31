@@ -37,4 +37,4 @@ python3 tfclient.py -action download -f test.txt -o /tmp/test.txt -a localhost -
 * They can leave an issue, make a pull request if they have a doubt, a suggestion or find an error, but they can also do it through DtxdF@protonmail.com
 * Don't wait long, it's an educational program
 
-***~ DtxdF***
+***\~ DtxdF***
