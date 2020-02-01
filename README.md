@@ -36,5 +36,6 @@ python3 tfclient.py -action download -f test.txt -o /tmp/test.txt -a localhost -
 * If you want to configure some things as buffers, the configuration file path; You can do it in "conf / config.h", but to modify it you will also need to modify the Makefile in case you have not already installed it.
 * They can leave an issue, make a pull request if they have a doubt, a suggestion or find an error, but they can also do it through DtxdF@protonmail.com
 * Don't wait long, it's an educational program
+* If have tftool updated, use "systemctl daemon-reload" command to reload ;)
 
 ***\~ DtxdF***
