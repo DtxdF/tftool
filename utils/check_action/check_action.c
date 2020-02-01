@@ -4,9 +4,9 @@
  *
 */
 
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "../../core/strlen_m/strlen_m.h"
 #include "../../core/get_extension/get_extension.h"

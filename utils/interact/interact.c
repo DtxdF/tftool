@@ -5,7 +5,6 @@
  *
  */
 
-#include <stdio.h>
 #include <pthread.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -22,7 +21,6 @@
 #include "../../conf/config.h"
 
 #include "../../core/exists/exists.h"
-#include "../../core/cronometer/cronometer.h"
 #include "../../core/get_filesize/get_filesize.h"
 #include "../../core/isdir/isdir.h"
 
@@ -36,8 +34,6 @@
 #include "../check_action/check_action.h"
 #include "../skills/tools.h"
 #include "../redirection/redirection.h"
-
-#define CMP_ACTION(c) check_action(c, CParams->P_config->action, sizeof(CParams->P_config->action))
 
 void * thread_interact(void * args) {
 	struct client_params * CParams;

@@ -3,6 +3,9 @@
 
 #include "../../conf/config.h"
 
+#include "../parser_content/parser_content.h"
+#include "../interact/interact.h"
+
 struct parser {
 
 	char cmd[3];
@@ -15,6 +18,7 @@ struct parser {
 
 int parse_content(struct parser * Parsed, struct client_params * CParams);
 
-#define MATCH(c) strncmp(Parsed.cmd, c, sizeof(Parsed.cmd)) == 0
-#define MATCH_P(c) strncmp(Parsed->cmd, c, sizeof(Parsed->cmd)) == 0
+#define		MATCH(c)	strncmp(Parsed.cmd, c, sizeof(Parsed.cmd)) == 0
+#define		MATCH_P(c)	strncmp(Parsed->cmd, c, sizeof(Parsed->cmd)) == 0
+
 #endif

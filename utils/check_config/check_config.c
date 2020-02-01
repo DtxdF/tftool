@@ -1,5 +1,3 @@
-#include <string.h>
-
 #define _CHECK_CONFIG_DEBUG /* Permitir "dprintf" */
 #define _CHECK_CONFIG_FUNCS /* Permitir "isempty" y "isincorrect" */
 

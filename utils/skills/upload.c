@@ -4,14 +4,11 @@
  *
 */
 
-#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <errno.h>
-#include <pthread.h>
 
-#include "../../core/cronometer/cronometer.h"
 #include "../../core/exists/exists.h"
 #include "../../core/get_filesize/get_filesize.h"
 
@@ -20,7 +17,6 @@
 #include "../interact/interact.h"
 #include "../parser_content/parser_content.h"
 #include "../free_resources/free_resources.h"
-#include "../strtok_m/strtok_m.h"
 #include "../client/client.h"
 
 void upload(struct parser * Parsed, struct client_params * CParams, 

@@ -2,20 +2,20 @@ SHELL 			= /usr/bin/env bash
 DESTDIR			= /usr/bin
 SRVDIR			= /etc/init.d
 CFGDIR			= /etc/tftool
-INSTALL_PROGRAM		= install
-CC			= gcc
+INSTALL_PROGRAM	= install
+CC				= gcc
 CFLAGS			= -Wall -g
 TARGET			= tftool
 OBJS			= conf_parser.o cronometer.o exists.o get_extension.o \
-			  ini.o interact.o join_filename.o free_resources.o \
-			  get_filesize.o free_secure.o exit_secure.o parser_content.o \
-			  strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
-			  upload.o delete.o client.o strtohost.o check_error.o isdir.o \
-			  check_config.o redirection.o
+			  	  ini.o interact.o join_filename.o free_resources.o \
+			  	  get_filesize.o free_secure.o exit_secure.o parser_content.o \
+			  	  strip.o check_action.o strlen_m.o strtok_m.o download.o list.o \
+			  	  upload.o delete.o client.o strtohost.o check_error.o isdir.o \
+			  	  check_config.o redirection.o
 LIBS			= -lpthread
 
-OBJECT_COMPILE		= ${CC} ${CFLAGS} -c
-FILE_COMPILE		= ${CC} ${CFLAGS} -o ${TARGET} ${TARGET}.c ${OBJS} ${LIBS}
+OBJECT_COMPILE	= ${CC} ${CFLAGS} -c
+FILE_COMPILE	= ${CC} ${CFLAGS} -o ${TARGET} ${TARGET}.c ${OBJS} ${LIBS}
 
 ${TARGET}: ${OBJS}
 	${FILE_COMPILE}

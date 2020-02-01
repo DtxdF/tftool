@@ -5,11 +5,8 @@
 */
 
 #include <signal.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-
-#include "../../core/cronometer/cronometer.h"
 
 #include "../interact/interact.h"
 #include "../debug/debug.h"

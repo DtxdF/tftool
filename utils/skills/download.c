@@ -5,14 +5,12 @@
  *
  */
 
-#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <errno.h>
 
 #include "../../core/get_filesize/get_filesize.h"
-#include "../../core/cronometer/cronometer.h"
 
 #include "../interact/interact.h"
 #include "../conf_parser/conf_parser.h"

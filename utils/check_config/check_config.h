@@ -1,6 +1,8 @@
 #ifndef 	_CHECK_CONFIG
 #define 	_CHECK_CONFIG
 
+#include <stdio.h>
+
 #include "../conf_parser/conf_parser.h"
 
 void check_config(struct configuration * Config);

@@ -3,6 +3,8 @@
 
 #include <pthread.h>
 
+#define CFG_MATCH(s, n) strncmp(section, s, section_l) == 0 && strncmp(name, n, name_l) == 0
+
 struct configuration {
 
 	// Server configuration
