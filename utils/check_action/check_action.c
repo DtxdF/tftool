@@ -89,7 +89,7 @@ int check_extension(char * filename, char * cmp_action, size_t array_length) {
 		return(cmp_(ext, cmp_action, array_length));
 
 	} else {
-		return 0;
+		return strncmp("ALL", cmp_action, sizeof(char)*4) == 0 ? 1 : 0;
 	
 	}
 
