@@ -7,7 +7,6 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -19,7 +18,6 @@
 #include "../../conf/config.h"
 
 #include "../../core/strlen_m/strlen_m.h"
-#include "../../core/cronometer/cronometer.h"
 #include "../../core/get_filesize/get_filesize.h"
 
 #include "../conf_parser/conf_parser.h"

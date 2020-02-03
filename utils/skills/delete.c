@@ -5,7 +5,6 @@
  */
 
 #include <unistd.h>
-#include <stdio.h>
 #include <pthread.h>
 #include <sys/types.h>
 #include <sys/socket.h>

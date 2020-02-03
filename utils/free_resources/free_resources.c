@@ -5,13 +5,11 @@
 */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
 #include <dirent.h>
 
-#include "../../core/cronometer/cronometer.h"
 #include "../interact/interact.h"
 
 #include "../debug/debug.h"

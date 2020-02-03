@@ -7,11 +7,10 @@
 #include <libgen.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <unistd.h>
 
-#include "../interact/interact.h"
 #include "parser_content.h"
+#include "../interact/interact.h"
 #include "../free_resources/free_resources.h"
 #include "../debug/debug.h"
 #include "../conf_parser/conf_parser.h"
@@ -20,7 +19,6 @@
 #include "../exit_secure/exit_secure.h"
 
 #include "../../core/join_filename/join_filename.h"
-#include "../../core/cronometer/cronometer.h"
 #include "../../core/strlen_m/strlen_m.h"
 #include "../../core/isdir/isdir.h"
 

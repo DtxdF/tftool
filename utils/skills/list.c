@@ -8,10 +8,8 @@
 #include <sys/socket.h>
 #include <dirent.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "../../core/strlen_m/strlen_m.h"
-#include "../../core/cronometer/cronometer.h"
 
 #include "../debug/debug.h"
 #include "../conf_parser/conf_parser.h"

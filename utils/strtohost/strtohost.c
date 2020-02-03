@@ -7,7 +7,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "strtohost.h"
 #include "../../core/strlen_m/strlen_m.h"

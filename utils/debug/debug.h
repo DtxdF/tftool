@@ -1,6 +1,16 @@
 #ifndef _CUSTOM_DEBUG
 #define _CUSTOM_DEBUG
 
+#include <stdio.h>
+
+/* Incluimos la función init_cronometer */
+
+#include "../../core/cronometer/cronometer.h"
+
+/* Incluimos struct client_params */
+
+#include "../interact/interact.h"
+
 /* El buffer que usará "init_cronometer" */
 
 char buff_time[12];

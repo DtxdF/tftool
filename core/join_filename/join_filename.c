@@ -3,7 +3,7 @@
  *	Crea una ruta absoluta a partir del directiorio de trabajo y el nombre
  *	del archivo a operar.
  *
-*/
+ */
 
 #include <string.h>
 
